@@ -8,8 +8,10 @@ const cors = require("cors");
 const app = express();
 app.use(
 	cors({
-		origin: ["http://localhost:3000", "https://courier-path.vercel.app", '*'],
-		credentials: true,
+		origin: true, // This allows all origins
+		methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+		allowedHeaders: ["Content-Type", "Authorization"],
+		credentials: false, // Set to false when allowing all origins
 	})
 );
 app.use(express.json());
