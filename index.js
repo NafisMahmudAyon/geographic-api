@@ -2,9 +2,16 @@ const express = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
 const dotenv = require("dotenv");
 dotenv.config();
+const cors = require("cors");
 
 // Initialize Express app
 const app = express();
+app.use(
+	cors({
+		origin: ["http://localhost:3000", "https://courier-path.vercel.app", '*'],
+		credentials: true,
+	})
+);
 app.use(express.json());
 
 console.log(process.env.MONGO_URL)
